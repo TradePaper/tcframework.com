@@ -27,7 +27,8 @@ export function Nav() {
         </Link>
       </div>
       <Link className="nav-cta" to="/paper">
-        Read the paper →
+        <span className="nav-cta-desktop">Read the paper →</span>
+        <span className="nav-cta-mobile">Paper</span>
       </Link>
     </nav>
   );

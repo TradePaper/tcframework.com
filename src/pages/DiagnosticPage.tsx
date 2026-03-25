@@ -132,7 +132,7 @@ export default function DiagnosticPage() {
 
   return (
     <div className="page">
-      <div style={{ background: "var(--paper-dark)", borderBottom: "1px solid var(--border)", padding: "12px 40px", position: "sticky", top: "56px", zIndex: 50 }}>
+      <div style={{ background: "var(--paper-dark)", borderBottom: "1px solid var(--border)", padding: "12px 40px", position: "sticky", top: "var(--nav-offset)", zIndex: 50 }}>
         <div style={{ maxWidth: "720px", margin: "0 auto", display: "flex", alignItems: "center", gap: "16px" }}>
           <span style={{ fontFamily: "var(--t-mono)", fontSize: "11px", color: "var(--ink-light)", letterSpacing: "0.06em", flexShrink: 0 }}>{current + 1} / {QUESTIONS.length}</span>
           <div className="progress-bar" style={{ flex: 1 }}><div className="progress-fill" style={{ width: `${progress * 100}%` }} /></div>
