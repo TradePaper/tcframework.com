@@ -72,7 +72,7 @@ export default function ReleaseNavigatorPage() {
                   </div>
                   {category.id === "ds" && (
                     <div style={{ marginTop: "16px", padding: "14px 18px", background: "var(--amber-pale)", border: "1px solid #FAC775", borderLeft: "3px solid var(--amber)", borderRadius: "var(--radius-md)", fontSize: "14px", color: "var(--ink-mid)", lineHeight: 1.6 }}>
-                      <strong style={{ color: "var(--amber)" }}>Path to exit:</strong> A digital security can transition to digital commodity or digital collectible status when the issuer fulfills or publicly abandons its essential managerial promises. Use the Separation Timeline tab to map your token&apos;s current position on this path.
+                      <strong style={{ color: "var(--amber)" }}>Digital securities:</strong> tokenized financial instruments that are themselves securities under the enumerated categories of the Securities Act are not subject to the Release&apos;s separation doctrine and remain subject to full securities law treatment. Separation applies only to non-security crypto assets (digital commodities, collectibles, and tools) that have become subject to an investment contract through issuer representations or promises. An issuer cannot fulfill or abandon managerial promises to convert a digital security into a non-security; the underlying instrument determines the classification, not the issuer&apos;s conduct.
                     </div>
                   )}
                 </div>
