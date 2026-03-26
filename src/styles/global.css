@@ -222,9 +222,9 @@ h1,h2,h3,h4 { font-family: var(--t-display); font-weight: 600; line-height: 1.2;
   .nav-cta { order: 2; margin-left: auto; padding: 8px 12px; align-self: flex-start; }
   .nav-cta-desktop { display: none; }
   .nav-cta-mobile { display: inline; }
-  .nav-links { order: 3; width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; padding-top: 10px; border-top: 1px solid var(--border); }
-  .nav-link { padding: 8px 10px; text-align: center; font-size: 12px; line-height: 1.25; }
-  .nav-link.release-link { grid-column: 1 / -1; }
+  .nav-links { order: 3; width: 100%; display: flex; flex-wrap: wrap; gap: 8px; padding-top: 10px; border-top: 1px solid var(--border); align-items: flex-start; }
+  .nav-link { padding: 8px 12px; text-align: left; font-size: 12px; line-height: 1.2; flex: 0 0 auto; }
+  .nav-link.release-link { width: auto; }
   .container, .container-narrow { padding: 0 20px; }
   .domain-grid, .release-cat-grid { grid-template-columns: 1fr 1fr; }
   .tier-grid { grid-template-columns: 1fr; }
