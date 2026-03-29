@@ -78,9 +78,9 @@ export default function ExplainerPage() {
                         {index === 2 && badge && <span className={`tier-badge ${prot ? "tier-3" : "tier-0"}`} style={{ fontSize: "10px" }}>{badge}</span>}
                       </div>
                       {index === 0 && landLabel && (
-                        <div style={{ marginTop: "12px", border: "1px dashed rgba(255,255,255,0.4)", borderRadius: "var(--radius-md)", padding: "12px 14px", background: "rgba(255,255,255,0.06)" }}>
-                          <div style={{ fontFamily: "var(--t-display)", fontSize: "14px", fontWeight: 600, lineHeight: 1.2, marginBottom: "4px" }}>{landLabel}</div>
-                          <div style={{ fontFamily: "var(--t-body)", fontSize: "12px", lineHeight: 1.5, color: "rgba(255,255,255,0.72)" }}>{landSub}</div>
+                        <div style={{ marginTop: "10px", border: "1px dashed rgba(255,255,255,0.28)", borderRadius: "var(--radius-md)", padding: "9px 11px", background: "rgba(255,255,255,0.04)" }}>
+                          <div style={{ fontFamily: "var(--t-display)", fontSize: "13px", fontWeight: 600, lineHeight: 1.2, marginBottom: "3px" }}>{landLabel}</div>
+                          <div style={{ fontFamily: "var(--t-body)", fontSize: "11px", lineHeight: 1.45, color: "rgba(255,255,255,0.7)" }}>{landSub}</div>
                         </div>
                       )}
                     </div>
