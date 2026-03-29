@@ -66,15 +66,23 @@ export default function ExplainerPage() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "24px" }}>
             {[
               { label: "Ground lease", sub: "With protections", layers: [{ n: "Fee owner", s: "Land ownership · Reversionary interest", badge: "Ground owner", prot: true }, { n: "Leasehold estate", s: "Improvements · Operations", badge: "", prot: true }, { n: "Leasehold mortgagee", s: "Junior capital provider", badge: "Protected ✓", prot: true }] },
-              { label: "Token structure", sub: "Without protections", layers: [{ n: "Founding entity", s: "IP · Governance · Revenue routing", badge: "Ground owner equivalent", prot: false }, { n: "Protocol", s: "Network · Codebase · Token utility", badge: "", prot: false }, { n: "Token holders", s: "Junior capital provider", badge: "Unprotected ✗", prot: false }] },
+              { label: "Token structure", sub: "Without protections", layers: [{ n: "Founding entity", s: "IP · Governance · Revenue routing", badge: "Ground owner equivalent", prot: false, landLabel: "Protocol = the land", landSub: "Network · Codebase · Token utility" }, { n: "Deployed ecosystem", s: "Apps · Integrations · dApps", badge: "", prot: false }, { n: "Token holders", s: "Junior capital provider", badge: "Unprotected ✗", prot: false }] },
             ].map(({ label, sub, layers }) => (
               <div key={label}>
                 <div style={{ fontFamily: "var(--t-mono)", fontSize: "11px", color: "var(--ink-light)", letterSpacing: "0.06em", marginBottom: "8px" }}>{label.toUpperCase()} — {sub}</div>
                 <div className="stack-diagram">
-                  {layers.map(({ n, s, badge, prot }, index) => (
-                    <div key={n} className={`stack-layer ${index === 0 ? "stack-layer-navy" : index === 1 ? "stack-layer-mid stack-layer-middle" : "stack-layer-light"}`}>
-                      <div><div className="stack-layer-label" style={{ fontSize: "14px" }}>{n}</div><div className="stack-layer-sub" style={{ fontSize: "12px" }}>{s}</div></div>
-                      {index === 2 && badge && <span className={`tier-badge ${prot ? "tier-3" : "tier-0"}`} style={{ fontSize: "10px" }}>{badge}</span>}
+                  {layers.map(({ n, s, badge, prot, landLabel, landSub }, index) => (
+                    <div key={n} className={`stack-layer ${index === 0 ? "stack-layer-navy" : index === 1 ? "stack-layer-mid stack-layer-middle" : "stack-layer-light"}`} style={index === 0 && landLabel ? { display: "block", cursor: "default" } : undefined}>
+                      <div style={index === 0 && landLabel ? { display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" } : {}}>
+                        <div><div className="stack-layer-label" style={{ fontSize: "14px" }}>{n}</div><div className="stack-layer-sub" style={{ fontSize: "12px" }}>{s}</div></div>
+                        {index === 2 && badge && <span className={`tier-badge ${prot ? "tier-3" : "tier-0"}`} style={{ fontSize: "10px" }}>{badge}</span>}
+                      </div>
+                      {index === 0 && landLabel && (
+                        <div style={{ marginTop: "12px", border: "1px dashed rgba(255,255,255,0.4)", borderRadius: "var(--radius-md)", padding: "12px 14px", background: "rgba(255,255,255,0.06)" }}>
+                          <div style={{ fontFamily: "var(--t-display)", fontSize: "14px", fontWeight: 600, lineHeight: 1.2, marginBottom: "4px" }}>{landLabel}</div>
+                          <div style={{ fontFamily: "var(--t-body)", fontSize: "12px", lineHeight: 1.5, color: "rgba(255,255,255,0.72)" }}>{landSub}</div>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -82,7 +90,7 @@ export default function ExplainerPage() {
             ))}
           </div>
           <div style={{ background: "var(--amber-pale)", border: "1px solid #FAC775", borderLeft: "3px solid var(--amber)", borderRadius: "var(--radius-md)", padding: "16px 18px", fontSize: "14px", color: "var(--ink-mid)", lineHeight: 1.6 }}>
-            <strong style={{ color: "var(--amber)" }}>The four structural features of value diversion:</strong> IP ownership · Revenue routing control · Centralized governance authority · Asymmetric optionality. The March 2026 Release adds a fifth concern: <strong>outstanding issuer promises</strong> that re-tether token value to founding entity conduct even in nominally decentralized structures.
+            <strong style={{ color: "var(--amber)" }}>The four structural features of value diversion:</strong> IP ownership · Revenue routing control · Centralized governance authority · Asymmetric optionality. The protocol is the substrate the founding entity controls, while the deployed ecosystem is where dependent activity accumulates. The March 2026 Release adds a fifth concern: <strong>outstanding issuer promises</strong> that re-tether token value to founding entity conduct even in nominally decentralized structures.
           </div>
         </div>
       ),
