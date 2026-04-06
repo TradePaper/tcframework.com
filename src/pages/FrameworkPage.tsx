@@ -1,8 +1,9 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { QUESTIONS } from "../data/questions";
 import { THEATER_PATTERNS } from "../data/theaterPatterns";
+import { captureFrameworkSectionViewed } from "../lib/analytics";
 
 type FrameworkTab = "table" | "theater" | "checklist";
 type TheaterAnswer = "yes" | "no" | null;
@@ -25,6 +26,33 @@ export default function FrameworkPage() {
   const tableData = QUESTIONS.map((question) => ({ num: question.id, name: question.title, impact: question.impact, t1: question.options[1].text, t2: question.options[2].text, t3: question.options[3].text, sec: question.why, isNew: question.id === "4.3" || question.id === "sep" }));
   const filtered = tableData.filter((row) => filterImpact === "all" || row.impact === filterImpact);
 
+  // Fire framework_section_viewed once per tab per page load
+  const viewedSections = useRef(new Set<string>());
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const sectionTitles: Record<FrameworkTab, string> = {
+      table: "18-issue table",
+      theater: "Theater protocol",
+      checklist: "No-action checklist",
+    };
+    if (viewedSections.current.has(tab)) return;
+    const el = sectionRef.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !viewedSections.current.has(tab)) {
+          viewedSections.current.add(tab);
+          captureFrameworkSectionViewed({ section_id: tab, section_title: sectionTitles[tab] });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [tab]);
+
   return (
     <div className="page">
       <div className="container" style={{ padding: "48px 40px" }}>
@@ -40,6 +68,7 @@ export default function FrameworkPage() {
           ))}
         </div>
 
+        <div ref={sectionRef} />
         {tab === "table" && (
           <div>
             <div style={{ display: "flex", gap: "8px", marginBottom: "20px", flexWrap: "wrap" }}>

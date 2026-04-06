@@ -1,6 +1,7 @@
 "use client";
 
 import { Link, useLocation } from "react-router-dom";
+import { capturePaperCtaClicked } from "../lib/analytics";
 
 const navLinks = [
   { href: "/explainer", label: "Explainer" },
@@ -26,7 +27,11 @@ export function Nav() {
           Release Navigator ★
         </Link>
       </div>
-      <Link className="nav-cta" to="/paper">
+      <Link
+        className="nav-cta"
+        to="/paper"
+        onClick={() => capturePaperCtaClicked({ destination_url: "/paper", cta_label: "Read the paper", cta_location: "nav" })}
+      >
         <span className="nav-cta-desktop">Read the paper →</span>
         <span className="nav-cta-mobile">Paper</span>
       </Link>

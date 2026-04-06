@@ -4,6 +4,7 @@ import type { MouseEvent as ReactMouseEvent } from "react";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { DOMAIN_DATA, SPECTRUM_STATES } from "../data/domainData";
+import { capturePaperCtaClicked } from "../lib/analytics";
 
 export default function ExplainerPage() {
   const [panel, setPanel] = useState(0);
@@ -171,7 +172,7 @@ export default function ExplainerPage() {
         <div className="panel-nav">
           <button className="btn btn-secondary" onClick={() => setPanel((value) => Math.max(0, value - 1))} disabled={panel === 0} style={{ opacity: panel === 0 ? 0.4 : 1 }}>← Back</button>
           <div className="panel-dots">{panels.map((_, index) => <div key={index} className={`panel-dot ${panel === index ? "active" : ""}`} onClick={() => setPanel(index)} />)}</div>
-          {panel < panels.length - 1 ? <button className="btn btn-primary" onClick={() => setPanel((value) => value + 1)}>Next →</button> : <Link className="btn btn-amber" to="/diagnostic">Run the diagnostic →</Link>}
+          {panel < panels.length - 1 ? <button className="btn btn-primary" onClick={() => setPanel((value) => value + 1)}>Next →</button> : <Link className="btn btn-amber" to="/diagnostic" onClick={() => capturePaperCtaClicked({ destination_url: "/diagnostic", cta_label: "Run the diagnostic", cta_location: "explainer_end" })}>Run the diagnostic →</Link>}
         </div>
         <div className="footnote">
           <em>Token Continuity Framework</em>, David Kuhn (2026) — <a href="https://tcframework.com" style={{ color: "var(--navy)" }}>tcframework.com</a>. Citations: Joshua Stein, <em>A Practical Guide to Ground Leases</em> (ABA 2018); Dennis S. Corgill, <em>Securities as Investments at Risk</em>, 67 Tul. L. Rev. 861 (1992); 11 U.S.C. §365(n); SEC/CFTC Release Nos. 33-11412; 34-105020 (Mar. 17, 2026); David Kuhn, <em>From Disclosure to Design: Constraining Risk in Structurally Subordinate Tokens</em> (X, Dec. 22, 2025); Remarks of Chairman Paul S. Atkins, DC Blockchain Summit (Mar. 19, 2026); <em>Loper Bright Enterprises v. Raimondo</em>, 603 U.S. 369 (2024) (courts apply <em>Howey</em> independently of agency guidance).

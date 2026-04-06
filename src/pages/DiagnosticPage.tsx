@@ -6,6 +6,7 @@ import { RadarChart } from "../components/RadarChart";
 import { CLUSTERS } from "../data/clusters";
 import { QUESTIONS, TIER_LABELS, TIER_SHORT, type TierValue } from "../data/questions";
 import { calcTier, type AnswerMap, type TierResult } from "../utils/calcTier";
+import { capturePaperCtaClicked } from "../lib/analytics";
 
 type Phase = "intro" | "question" | "output";
 
@@ -110,7 +111,7 @@ export default function DiagnosticPage() {
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 <button className="btn btn-secondary" onClick={reset}>Start over</button>
-                <Link className="btn btn-primary" to="/paper">Read the paper →</Link>
+                <Link className="btn btn-primary" to="/paper" onClick={() => capturePaperCtaClicked({ destination_url: "/paper", cta_label: "Read the paper", cta_location: "diagnostic_results" })}>Read the paper →</Link>
               </div>
             </div>
             <div style={{ position: "sticky", top: "80px" }}>

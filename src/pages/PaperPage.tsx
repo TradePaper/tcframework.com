@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "react-router-dom";
+import { capturePaperPdfOpened } from "../lib/analytics";
 
 const PAPER_URL = "/token-continuity-framework-paper.pdf";
 
@@ -16,10 +17,21 @@ export default function PaperPage() {
           Read the final paper inline below, or open the PDF in a new tab for browser-native viewing and download controls.
         </p>
         <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "20px" }}>
-          <a className="btn btn-primary" href={PAPER_URL} target="_blank" rel="noreferrer">
+          <a
+            className="btn btn-primary"
+            href={PAPER_URL}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => capturePaperPdfOpened({ pdf_url: PAPER_URL, trigger_location: "paper_page_open_tab" })}
+          >
             Open PDF in new tab →
           </a>
-          <a className="btn btn-secondary" href={PAPER_URL} download>
+          <a
+            className="btn btn-secondary"
+            href={PAPER_URL}
+            download
+            onClick={() => capturePaperPdfOpened({ pdf_url: PAPER_URL, trigger_location: "paper_page_download" })}
+          >
             Download PDF
           </a>
           <Link className="btn btn-secondary" to="/">
