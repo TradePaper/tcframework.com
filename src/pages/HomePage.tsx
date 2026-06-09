@@ -9,12 +9,12 @@ export default function HomePage() {
         <div style={{ padding: "80px 0 64px", borderBottom: "1px solid var(--border)" }}>
           <div style={{ fontFamily: "var(--t-mono)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--navy)", marginBottom: "20px" }}>Token Continuity Framework · tcframework.com</div>
           <h1 style={{ fontFamily: "var(--t-display)", fontSize: "clamp(36px,5vw,58px)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "20px" }}>
-            Can token holders act
+            Token protections
             <br />
-            <em style={{ fontStyle: "italic", color: "var(--navy)" }}>before value is destroyed?</em>
+            <em style={{ fontStyle: "italic", color: "var(--navy)" }}>that don&apos;t require a vote.</em>
           </h1>
           <p style={{ fontFamily: "var(--t-body)", fontSize: "20px", fontWeight: 500, color: "var(--ink)", lineHeight: 1.5, maxWidth: "580px", marginBottom: "16px" }}>
-            Token holders need continuity rights.
+            Structural continuity rights, enforced by design rather than by token-holder governance.
           </p>
           <p style={{ fontFamily: "var(--t-body)", fontSize: "17px", fontWeight: 300, color: "var(--ink-mid)", lineHeight: 1.65, maxWidth: "720px", marginBottom: "20px" }}>
             The Token Continuity Framework provides the design criteria to build them — drawn from a century of property and finance law that has solved this problem everywhere except crypto. That structural work is pathway-agnostic: it maps onto the March 2026 SEC/CFTC Release&apos;s separation doctrine today, and onto a statutory decentralization pathway under the pending CLARITY Act if enacted. For advisors facing the registration decision, the TCF makes the analysis concrete: mapping a structure against all 18 issues shows exactly what each non-registration pathway requires. The same work serves every route, which is why it holds its value as the path to clarity is liberalized — and why a bespoke no-action letter is a fallback, not the goal.
