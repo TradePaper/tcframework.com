@@ -8,7 +8,7 @@
 
 ## Overview
 
-The Token Continuity Framework argues that the dominant dual equity-token architecture in crypto is economically equivalent to a ground lease — predictably subordinating token holders to equity sponsors. The framework proposes a tiered recognition system and structural protections drawn from leasehold mortgagee protection doctrine, anchored to the **March 2026 SEC/CFTC Joint Interpretive Release** (Release Nos. 33-11412; 34-105020).
+The Token Continuity Framework argues that the dominant dual equity-token architecture in crypto is economically analogous to a ground lease — predictably subordinating token holders to equity sponsors — and that the cure is structural: enforceable, legible, calibrated constraints on founding-entity discretion across 18 issues. That structural work is pathway-agnostic. It maps onto the **March 2026 SEC/CFTC Joint Interpretive Release** (Release Nos. 33-11412; 34-105020) and its separation doctrine, and onto the statutory decentralization pathway proposed by the **Digital Asset Market Clarity (CLARITY) Act** (pending; advanced out of the Senate Banking Committee in May 2026 — not enacted). The framework does not depend on the durability of any single regime: the Release is interpretive guidance, not binding rulemaking.
 
 The companion web application provides interactive tools for practitioners, regulators, and protocol designers to assess token structures, navigate the regulatory release, and apply the framework.
 
@@ -28,7 +28,7 @@ An 18-question assessment tool that evaluates any token's structural position ac
 ### Release Navigator (`/release`)
 Four-tab explorer for the March 2026 SEC/CFTC Joint Interpretive Release:
 - **Release Categories** — Organized taxonomy of regulatory provisions
-- **Compliance Pathways** — Step-by-step issuer guidance
+- **Compliance Pathways** — Structural, statutory, exemptive, and legacy guidance routes
 - **Separation Timeline** — Key dates and implementation phases
 - **Issuer Promise Audit** — Cross-reference tool for disclosure obligations
 
@@ -42,7 +42,7 @@ Four-panel interactive walkthrough of the ground lease analogy:
 Comprehensive reference with three views:
 - **18-Issue Table** — Full structural assessment matrix
 - **Theater Protocol** — Pattern recognition for common token arrangements
-- **No-Action Checklist** — Practical compliance tool
+- **Structural-Readiness Checklist** — Practical continuity and pathway-readiness tool
 
 ## Tech Stack
 
