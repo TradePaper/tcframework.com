@@ -1,6 +1,8 @@
 # Token Continuity Framework (TCF)
 
-**Applying Ground Lease Doctrine to Token Holder Structural Protections Under U.S. Securities Law**
+**Structural continuity rights for token holders — enforced by design, not by a governance vote.**
+
+Applying ground lease doctrine — and the broader law of structural subordination — to token holder protections under U.S. securities law.
 
 [tcframework.com](https://tcframework.com) | [White Paper (PDF)](https://tcframework.com/token-continuity-framework-paper.pdf)
 
@@ -8,7 +10,7 @@
 
 ## Overview
 
-The Token Continuity Framework argues that the dominant dual equity-token architecture in crypto is economically analogous to a ground lease — predictably subordinating token holders to equity sponsors — and that the cure is structural: enforceable, legible, calibrated constraints on founding-entity discretion across 18 issues. That structural work is pathway-agnostic. It maps onto the **March 2026 SEC/CFTC Joint Interpretive Release** (Release Nos. 33-11412; 34-105020) and its separation doctrine, and onto the statutory decentralization pathway proposed by the **Digital Asset Market Clarity (CLARITY) Act** (pending; advanced out of the Senate Banking Committee in May 2026 — not enacted). The framework does not depend on the durability of any single regime: the Release is interpretive guidance, not binding rulemaking.
+The Token Continuity Framework argues that the dominant dual equity-token architecture in crypto is economically analogous to a ground lease — and to other structurally subordinate arrangements (franchises, ABS tranches, technology licenses, concessions) where a senior party retains control — predictably subordinating token holders to equity sponsors. The cure is structural: enforceable, legible, calibrated constraints on founding-entity discretion across 18 issues — protections that operate by design rather than depending on token-holder votes. That structural work is pathway-agnostic. It maps onto the **March 2026 SEC/CFTC Joint Interpretive Release** (Release Nos. 33-11412; 34-105020) and its separation doctrine, and onto the statutory decentralization pathway proposed by the **Digital Asset Market Clarity (CLARITY) Act** (pending; advanced out of the Senate Banking Committee in May 2026 — not enacted). The framework does not depend on the durability of any single regime: the Release is interpretive guidance, not binding rulemaking.
 
 The companion web application provides interactive tools for practitioners, regulators, and protocol designers to assess token structures, navigate the regulatory release, and apply the framework.
 
@@ -27,10 +29,10 @@ An 18-question assessment tool that evaluates any token's structural position ac
 
 ### Release Navigator (`/release`)
 Four-tab explorer for the March 2026 SEC/CFTC Joint Interpretive Release:
-- **Release Categories** — Organized taxonomy of regulatory provisions
-- **Compliance Pathways** — Structural, statutory, exemptive, and legacy guidance routes
-- **Separation Timeline** — Key dates and implementation phases
-- **Issuer Promise Audit** — Cross-reference tool for disclosure obligations
+- **Five-category classifier** — Select your token's category (digital commodities, collectibles, tools, stablecoins, or securities) to see its regulatory treatment and required TCF tier
+- **Pathways to clarity** — The routes to non-registration: exemptive (anticipated rulemaking), statutory (pending CLARITY Act), and a no-action letter as a costly fallback — all served by the same structural work
+- **Separation timeline** — Where a token sits on the separation path and the TCF actions required at each stage
+- **Issuer promise audit** — Cross-reference tool for tracking issuer promises against fulfillment/abandonment
 
 ### Explainer (`/explainer`)
 Four-panel interactive walkthrough of the ground lease analogy:
@@ -67,14 +69,19 @@ src/
     Nav.tsx                   # Navigation
     RadarChart.tsx            # Diagnostic output visualization
     TierBadge.tsx             # Tier classification display
+    ImpactBadge.tsx           # High/med/low impact badge
+    PostHogProvider.tsx       # Analytics + pageview tracking
   data/
-    base.ts                   # Core data (promise types, release categories)
-    questions.ts              # 18 diagnostic questions + tier mappings
-    releaseData.ts            # March 2026 Release data
-    theaterPatterns.ts        # Theater protocol patterns
+    base.ts                   # Core data module (questions, clusters, tiers, release categories, domains, theater patterns)
+    questions.ts              # Re-exports diagnostic questions from base.ts
+    clusters.ts               # Re-exports issue clusters from base.ts
+    domainData.ts             # Re-exports domain spectrum data from base.ts
+    releaseData.ts            # Re-exports March 2026 Release data from base.ts
+    theaterPatterns.ts        # Re-exports theater protocol patterns from base.ts
   lib/
-    calcTier.ts               # Tier calculation engine
     analytics.ts              # PostHog event tracking
+  utils/
+    calcTier.ts               # Tier calculation engine
 public/
   token-continuity-framework-paper.pdf   # White paper
 ```
