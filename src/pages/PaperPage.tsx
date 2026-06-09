@@ -3,7 +3,6 @@
 import { Link } from "react-router-dom";
 
 const PAPER_URL = "/token-continuity-framework-paper.pdf";
-const SUPPLEMENT_URL = "/clarity-supplement.pdf";
 
 export default function PaperPage() {
   return (
@@ -26,17 +25,6 @@ export default function PaperPage() {
           <Link className="btn btn-secondary" to="/">
             Back to home
           </Link>
-        </div>
-        <div className="release-banner" style={{ marginBottom: "20px", maxWidth: "760px" }}>
-          <strong>CLARITY Act Supplement (June 2026):</strong> a short addendum on how the framework maps onto the Digital Asset Market Clarity Act as advanced by the Senate Banking Committee (May 14, 2026) — pending, not enacted.{" "}
-          <a
-            href={SUPPLEMENT_URL}
-            target="_blank"
-            rel="noreferrer"
-            style={{ color: "var(--teal)", fontFamily: "var(--t-mono)", fontSize: "12px", letterSpacing: "0.04em", textDecoration: "none" }}
-          >
-            Open supplement PDF →
-          </a>
         </div>
         <div className="card" style={{ padding: "12px", overflow: "hidden" }}>
           <iframe

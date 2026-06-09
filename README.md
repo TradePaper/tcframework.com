@@ -2,7 +2,7 @@
 
 **Applying Ground Lease Doctrine to Token Holder Structural Protections Under U.S. Securities Law**
 
-[tcframework.com](https://tcframework.com) | [White Paper (PDF)](https://tcframework.com/token-continuity-framework-paper.pdf) | [CLARITY Act Supplement (PDF)](https://tcframework.com/clarity-supplement.pdf)
+[tcframework.com](https://tcframework.com) | [White Paper (PDF)](https://tcframework.com/token-continuity-framework-paper.pdf)
 
 ---
 
