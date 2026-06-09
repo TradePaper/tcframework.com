@@ -43,7 +43,7 @@ export default function HomePage() {
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "14px", padding: "48px 0 32px" }}>
           {[
-            { icon: "○", title: "The mechanism", desc: "Why founding entities capture value while token holders bear risk — and what continuity rights would change.", href: "/explainer", cta: "Read the explainer" },
+            { icon: "○", title: "The mechanism", desc: "Why founding entities capture value while token holders bear risk — and the structural protections that change it without a governance vote.", href: "/explainer", cta: "Read the explainer" },
             { icon: "◎", title: "The diagnostic", desc: "18-question structural assessment mapping your token against the TCF translation table.", href: "/diagnostic", cta: "Run the diagnostic" },
             { icon: "◻", title: "The framework", desc: "The complete 18-issue translation table, theater protocol, and structural-readiness checklist.", href: "/framework", cta: "Explore the framework" },
             { icon: "★", title: "Release Navigator", desc: "Make the March 2026 SEC/CFTC release legible — five categories, separation doctrine, issuer promise audit.", href: "/release", cta: "Open the Navigator", teal: true },
