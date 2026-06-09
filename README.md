@@ -92,7 +92,7 @@ public/
 General Counsel | Blockchain, Digital Assets & Finance
 
 - [kvladvisory.com](https://kvladvisory.com)
-- [LinkedIn](https://linkedin.com/in/davidtkuhn)
+- [LinkedIn](https://www.linkedin.com/in/david-t-kuhn/)
 - [EventRisk.ai](https://eventrisk.ai) — Prediction markets and derivatives law research (companion project)
 
 ## License
