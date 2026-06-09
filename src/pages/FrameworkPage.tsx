@@ -1,17 +1,18 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { QUESTIONS } from "../data/questions";
 import { THEATER_PATTERNS } from "../data/theaterPatterns";
+import { captureFrameworkSectionViewed } from "../lib/analytics";
 
 type FrameworkTab = "table" | "theater" | "checklist";
 type TheaterAnswer = "yes" | "no" | null;
 
 const checklistItems = [
-  { num: "01", title: "IP separation or encumbrance", desc: "The founding entity must have either (a) transferred protocol IP to a foundation or similar entity with governance-controlled disposition rights, or (b) encumbered the IP with a binding license that automatically extends to token holders and any successor operator upon defined trigger events.", note: "A bare promise to license in the future is insufficient. The encumbrance must be in place, documented, and verifiable before the request is filed.", ref: "Section VIII.B — Prerequisite 1" },
-  { num: "02", title: "Governance implementation", desc: "The governance mechanisms described in the request must be implemented at the protocol level, not merely described in a whitepaper. On-chain governance verifiable by any observer is far stronger than off-chain systems requiring trust in founding entity representations.", note: "Where on-chain implementation is not feasible, contractual governance commitments with third-party enforcement mechanisms are the minimum acceptable substitute.", ref: "Section VIII.B — Prerequisite 2" },
+  { num: "01", title: "IP separation or encumbrance", desc: "The founding entity must have either (a) transferred protocol IP to a foundation or similar entity with governance-controlled disposition rights, or (b) encumbered the IP with a binding license that automatically extends to token holders and any successor operator upon defined trigger events.", note: "A bare promise to license in the future is insufficient. The encumbrance must be in place, documented, and verifiable before the structure is relied upon.", ref: "Section VIII.B — Prerequisite 1" },
+  { num: "02", title: "Governance implementation", desc: "The governance mechanisms relied upon for separation, decentralization, or exemption treatment must be implemented at the protocol level, not merely described in a whitepaper. On-chain governance verifiable by any observer is far stronger than off-chain systems requiring trust in founding entity representations.", note: "Where on-chain implementation is not feasible, contractual governance commitments with third-party enforcement mechanisms are the minimum acceptable substitute.", ref: "Section VIII.B — Prerequisite 2" },
   { num: "03", title: "Treasury separation", desc: "Founding entity treasury funds must be separated from protocol treasury funds, with defined and limited mechanisms for founding entity compensation from protocol revenues. The compensation structure must be fixed or formulaic rather than profit-participating.", note: "A founding entity that retains discretionary access to protocol treasury funds has not meaningfully constrained its revenue routing control regardless of what governance documents say.", ref: "Section VIII.B — Prerequisite 3" },
-  { num: "04", title: "Survivability documentation", desc: "The §365(n)-equivalent legal analysis must be prepared and documented before filing, addressing: (a) whether token utility rights constitute IP licenses protected by §365(n); (b) whether the open-source license provides an independent survivability basis; and (c) what governance mechanisms activate upon founding entity insolvency.", note: "The SEC staff are not bankruptcy lawyers, but they will want to know that this question has been seriously analyzed by independent counsel.", ref: "Section VIII.B — Prerequisite 4" },
+  { num: "04", title: "Survivability documentation", desc: "The §365(n)-equivalent legal analysis must be prepared and documented before relying on a non-registration pathway, addressing: (a) whether token utility rights constitute IP licenses protected by §365(n); (b) whether the open-source license provides an independent survivability basis; and (c) what governance mechanisms activate upon founding entity insolvency.", note: "Regulators, courts, counterparties, and investors will want to know that this question has been seriously analyzed by independent counsel.", ref: "Section VIII.B — Prerequisite 4" },
   { num: "05", title: "Independent verification", desc: "At least one element of the structure — ideally governance implementation and the IP encumbrance — must be verifiable by an independent third party without relying on founding entity representations.", note: "For on-chain governance, this is inherent: the blockchain provides independent verification. For off-chain elements, a legal opinion from independent counsel or public registration of legal instruments serves this function.", ref: "Section VIII.B — Prerequisite 5" },
 ];
 
@@ -25,21 +26,49 @@ export default function FrameworkPage() {
   const tableData = QUESTIONS.map((question) => ({ num: question.id, name: question.title, impact: question.impact, t1: question.options[1].text, t2: question.options[2].text, t3: question.options[3].text, sec: question.why, isNew: question.id === "4.3" || question.id === "sep" }));
   const filtered = tableData.filter((row) => filterImpact === "all" || row.impact === filterImpact);
 
+  // Fire framework_section_viewed once per tab per page load
+  const viewedSections = useRef(new Set<string>());
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const sectionTitles: Record<FrameworkTab, string> = {
+      table: "18-issue table",
+      theater: "Theater protocol",
+      checklist: "Structural-readiness checklist",
+    };
+    if (viewedSections.current.has(tab)) return;
+    const el = sectionRef.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !viewedSections.current.has(tab)) {
+          viewedSections.current.add(tab);
+          captureFrameworkSectionViewed({ section_id: tab, section_title: sectionTitles[tab] });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [tab]);
+
   return (
     <div className="page">
       <div className="container" style={{ padding: "48px 40px" }}>
         <div className="section-eyebrow">Framework reference</div>
         <h1 style={{ fontFamily: "var(--t-display)", fontSize: "36px", fontWeight: 700, lineHeight: 1.2, marginBottom: "12px", letterSpacing: "-0.02em" }}>The Token Continuity Framework</h1>
-        <p style={{ fontSize: "16px", color: "var(--ink-mid)", lineHeight: 1.65, marginBottom: "16px", maxWidth: "700px" }}>The complete 18-issue translation table, theater identification protocol, and no-action letter prerequisites — anchored in the March 2026 Release.</p>
+        <p style={{ fontSize: "16px", color: "var(--ink-mid)", lineHeight: 1.65, marginBottom: "16px", maxWidth: "700px" }}>The complete 18-issue translation table, theater identification protocol, and structural-readiness criteria — mapped to the March 2026 Release and useful across statutory, exemptive, and legacy no-action pathways.</p>
         <div className="release-banner" style={{ marginBottom: "28px", maxWidth: "700px" }}>
-          Issues 4.3 (Revenue Routing / Buy-Burn) and Sep (Separation Doctrine) are new additions anchored directly in the March 17, 2026 SEC/CFTC joint interpretive release.
+          Issues 4.3 (Revenue Routing / Buy-Burn) and Sep (Separation Doctrine) are new additions made in light of the March 17, 2026 SEC/CFTC joint interpretive release.
         </div>
         <div style={{ display: "flex", gap: "4px", marginBottom: "32px", borderBottom: "2px solid var(--border)", paddingBottom: "0" }}>
-          {[["table", "18-issue table"], ["theater", "Theater protocol"], ["checklist", "No-action checklist"]].map(([id, label]) => (
+          {[["table", "18-issue table"], ["theater", "Theater protocol"], ["checklist", "Structural-readiness checklist"]].map(([id, label]) => (
             <button key={id} onClick={() => setTab(id as FrameworkTab)} style={{ fontFamily: "var(--t-body)", fontSize: "14px", padding: "10px 18px", border: "none", background: "none", cursor: "pointer", transition: "all .15s", color: tab === id ? "var(--navy)" : "var(--ink-mid)", borderBottom: tab === id ? "2px solid var(--navy)" : "2px solid transparent", marginBottom: "-2px", fontWeight: tab === id ? 500 : 400 }}>{label}</button>
           ))}
         </div>
 
+        <div ref={sectionRef} />
         {tab === "table" && (
           <div>
             <div style={{ display: "flex", gap: "8px", marginBottom: "20px", flexWrap: "wrap" }}>
@@ -135,8 +164,8 @@ export default function FrameworkPage() {
 
         {tab === "checklist" && (
           <div style={{ maxWidth: "720px" }}>
-            <p style={{ fontSize: "15px", color: "var(--ink-mid)", lineHeight: 1.65, marginBottom: "24px" }}>Five structural prerequisites that must be satisfied before filing a Tier 2 no-action request. These are conditions of credibility — not items to complete after a favorable response.</p>
-            <div className="disclaimer" style={{ marginBottom: "28px" }}>A no-action letter request is a representation to the SEC staff about a specific existing or proposed structure. Consult qualified securities counsel before filing any no-action request.</div>
+            <p style={{ fontSize: "15px", color: "var(--ink-mid)", lineHeight: 1.65, marginBottom: "24px" }}>Five structural readiness criteria. They are the conditions that make any non-registration pathway credible — a decentralization or separation argument, an exemption filing, or (the most burdensome option) a no-action request. Satisfy them before relying on any pathway, not after.</p>
+            <div className="disclaimer" style={{ marginBottom: "28px" }}>A no-action letter request is a representation to the SEC staff about a specific existing or proposed structure. Consult qualified securities counsel before relying on any pathway or filing any no-action request.</div>
             {checklistItems.map((item, index) => (
               <div key={index} style={{ display: "flex", gap: "20px", padding: "24px 0", borderBottom: "1px solid var(--border)" }}>
                 <div style={{ fontFamily: "var(--t-mono)", fontSize: "28px", fontWeight: 500, color: "var(--border-mid)", flexShrink: 0, lineHeight: 1 }}>{item.num}</div>
