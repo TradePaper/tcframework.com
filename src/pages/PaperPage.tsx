@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "react-router-dom";
+import { SeriesIndex } from "../components/SeriesIndex";
 import { capturePaperPdfOpened } from "../lib/analytics";
 
 const PAPER_URL = "/token-continuity-framework-paper.pdf";
@@ -34,6 +35,9 @@ export default function PaperPage() {
           >
             Download PDF
           </a>
+          <a className="btn btn-secondary" href="#series">
+            The full series ↓
+          </a>
           <Link className="btn btn-secondary" to="/">
             Back to home
           </Link>
@@ -44,6 +48,9 @@ export default function PaperPage() {
             src={PAPER_URL}
             style={{ width: "100%", minHeight: "calc(100vh - 220px)", border: "none", background: "white", borderRadius: "var(--radius-md)" }}
           />
+        </div>
+        <div id="series" style={{ scrollMarginTop: "var(--nav-offset)" }}>
+          <SeriesIndex style={{ padding: "48px 0 8px" }} />
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "react-router-dom";
+import { SeriesIndex } from "../components/SeriesIndex";
 
 export default function HomePage() {
   return (
@@ -57,6 +58,8 @@ export default function HomePage() {
             </Link>
           ))}
         </div>
+
+        <SeriesIndex />
 
         <div style={{ background: "var(--navy)", borderRadius: "var(--radius-lg)", padding: "40px", color: "white", marginBottom: "64px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>
