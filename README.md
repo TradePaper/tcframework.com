@@ -98,3 +98,4 @@ General Counsel | Blockchain, Digital Assets & Finance
 ## License
 
 All rights reserved. Research papers and written content are published for educational and analytical purposes. Code is provided for reference. Please contact the author for licensing inquiries.
+
