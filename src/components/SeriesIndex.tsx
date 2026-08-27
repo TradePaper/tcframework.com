@@ -38,10 +38,11 @@ const PARTS: Part[] = [
   },
 ];
 
-export function SeriesIndex({ style }: { style?: React.CSSProperties }) {
+export function SeriesIndex({ style, hideLede }: { style?: React.CSSProperties; hideLede?: boolean }) {
   return (
     <section style={{ padding: "8px 0 56px", ...style }}>
-      <div className="section-eyebrow">The Series</div>
+      {!hideLede && <div className="section-eyebrow">The Series</div>}
+      {!hideLede && (
       <p
         style={{
           fontSize: "15px",
@@ -54,6 +55,7 @@ export function SeriesIndex({ style }: { style?: React.CSSProperties }) {
         The Token Continuity Framework is developed across three installments. Parts I and II
         set out the argument; Part III is the practitioner framework hosted on this site.
       </p>
+      )}
 
       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
         {PARTS.map(({ part, date, title, desc, href, external }) => {

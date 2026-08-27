@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { capturePaperCtaClicked } from "../lib/analytics";
 
 const navLinks = [
+  { href: "/series", label: "Series" },
   { href: "/explainer", label: "Explainer" },
   { href: "/diagnostic", label: "Diagnostic" },
   { href: "/framework", label: "Framework" },

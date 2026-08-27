@@ -42,6 +42,8 @@ export default function HomePage() {
           </div>
         </div>
 
+        <SeriesIndex style={{ padding: "40px 0 24px" }} />
+
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "14px", padding: "48px 0 32px" }}>
           {[
             { icon: "○", title: "The mechanism", desc: "Why founding entities capture value while token holders bear risk — and the structural protections that change it without a governance vote.", href: "/explainer", cta: "Read the explainer" },
@@ -58,8 +60,6 @@ export default function HomePage() {
             </Link>
           ))}
         </div>
-
-        <SeriesIndex />
 
         <div style={{ background: "var(--navy)", borderRadius: "var(--radius-lg)", padding: "40px", color: "white", marginBottom: "64px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "center" }}>

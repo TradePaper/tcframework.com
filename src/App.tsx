@@ -6,6 +6,7 @@ import DiagnosticPage from "./pages/DiagnosticPage";
 import FrameworkPage from "./pages/FrameworkPage";
 import ReleaseNavigatorPage from "./pages/ReleaseNavigatorPage";
 import PaperPage from "./pages/PaperPage";
+import SeriesPage from "./pages/SeriesPage";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/diagnostic" element={<DiagnosticPage />} />
         <Route path="/framework" element={<FrameworkPage />} />
         <Route path="/release" element={<ReleaseNavigatorPage />} />
+        <Route path="/series" element={<SeriesPage />} />
         <Route path="/paper" element={<PaperPage />} />
       </Routes>
     </>
