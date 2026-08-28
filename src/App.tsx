@@ -13,12 +13,13 @@ export default function App() {
     <>
       <Nav />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<SeriesPage />} />
+        <Route path="/series" element={<SeriesPage />} />
+        <Route path="/overview" element={<HomePage />} />
         <Route path="/explainer" element={<ExplainerPage />} />
         <Route path="/diagnostic" element={<DiagnosticPage />} />
         <Route path="/framework" element={<FrameworkPage />} />
         <Route path="/release" element={<ReleaseNavigatorPage />} />
-        <Route path="/series" element={<SeriesPage />} />
         <Route path="/paper" element={<PaperPage />} />
       </Routes>
     </>

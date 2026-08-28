@@ -1,7 +1,6 @@
 "use client";
 
 import { Link } from "react-router-dom";
-import { SeriesIndex } from "../components/SeriesIndex";
 
 export default function HomePage() {
   return (
@@ -41,8 +40,6 @@ export default function HomePage() {
             By David Kuhn · Token Continuity Framework · tcframework.com · 2026
           </div>
         </div>
-
-        <SeriesIndex style={{ padding: "40px 0 24px" }} />
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "14px", padding: "48px 0 32px" }}>
           {[

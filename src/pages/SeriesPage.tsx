@@ -1,5 +1,6 @@
 "use client";
 
+import { Link } from "react-router-dom";
 import { SeriesIndex } from "../components/SeriesIndex";
 
 export default function SeriesPage() {
@@ -33,6 +34,24 @@ export default function SeriesPage() {
           Part III turns it into the practitioner framework this site is built around.
         </p>
         <SeriesIndex style={{ padding: "24px 0 8px" }} hideLede />
+
+        <div style={{ borderTop: "1px solid var(--border)", paddingTop: "28px", marginTop: "8px" }}>
+          <p style={{ fontSize: "15px", color: "var(--ink-mid)", lineHeight: 1.65, maxWidth: "620px", marginBottom: "16px" }}>
+            The framework itself is built out on this site — an explainer, an 18-issue
+            diagnostic, and a navigator for the March 2026 SEC/CFTC release.
+          </p>
+          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+            <Link className="btn btn-primary" to="/explainer">
+              Understand the mechanism →
+            </Link>
+            <Link className="btn btn-secondary" to="/diagnostic">
+              Diagnose your structure
+            </Link>
+            <Link className="btn btn-secondary" to="/overview">
+              Site overview
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

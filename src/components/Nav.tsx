@@ -4,7 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import { capturePaperCtaClicked } from "../lib/analytics";
 
 const navLinks = [
-  { href: "/series", label: "Series" },
+  { href: "/", label: "Series", alias: "/series" },
+  { href: "/overview", label: "Overview" },
   { href: "/explainer", label: "Explainer" },
   { href: "/diagnostic", label: "Diagnostic" },
   { href: "/framework", label: "Framework" },
@@ -20,7 +21,11 @@ export function Nav() {
       </Link>
       <div className="nav-links">
         {navLinks.map((link) => (
-          <Link key={link.href} to={link.href} className={`nav-link${pathname === link.href ? " active" : ""}`}>
+          <Link
+            key={link.href}
+            to={link.href}
+            className={`nav-link${pathname === link.href || pathname === link.alias ? " active" : ""}`}
+          >
             {link.label}
           </Link>
         ))}

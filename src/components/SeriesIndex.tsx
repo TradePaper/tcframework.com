@@ -177,7 +177,7 @@ export function SeriesIndex({ style, hideLede }: { style?: React.CSSProperties; 
           marginTop: "16px",
         }}
       >
-        All three parts by David T. Kuhn · KVL Advisory
+        All three parts by David T. Kuhn
       </div>
     </section>
   );
